@@ -31,20 +31,20 @@ export class News extends Component {
     this.setState({loading: true});
     let data = await fetch(url);
     let parsedData = await data.json()
-    console.log(parsedData)
+    // console.log(parsedData)
     this.setState({articles: parsedData.articles, 
       totalResults: parsedData.totalResults,
       loading: false})
   }
 
   handleprevclick = async () =>{
-    console.log("prev")
+    // console.log("prev")
 
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=2a9222d5c2334ded8e6f04d2571fc4e3&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
     this.setState({loading: true});
     let data = await fetch(url);
     let parsedData = await data.json()
-    console.log(parsedData)
+    // console.log(parsedData)
     this.setState({
       page: this.state.page - 1,
       articles: parsedData.articles,
@@ -53,14 +53,14 @@ export class News extends Component {
   }
 
   handlenextclick = async () =>{
-    console.log("Next")
+    // console.log("Next")
 
     if (!(this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize))){
       let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=2a9222d5c2334ded8e6f04d2571fc4e3&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
       this.setState({loading: true});
       let data = await fetch(url);
       let parsedData = await data.json()
-      console.log(parsedData)
+      // console.log(parsedData)
       this.setState({
         page: this.state.page + 1,
         articles: parsedData.articles,
@@ -78,7 +78,7 @@ export class News extends Component {
           {!this.state.loading && this.state.articles.map((element)=>{
             return(
             <div className="col-md-4 my-5" key={element.url}>
-            <NewsItem title={element.title?element.title.slice(0, 52):""} description={element.description?element.description.slice(0, 95):""} imageUrl={element.urlToImage} newsUrl={element.url}/>
+            <NewsItem title={element.title?element.title.slice(0, 52):""} description={element.description?element.description.slice(0, 95):""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name}/>
             </div>
             )
           })}
