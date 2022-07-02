@@ -7,6 +7,7 @@ import News from "./components/News";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export class App extends Component {
+  pageSize = 5;
   render() {
     return (
       <Router>
@@ -16,12 +17,24 @@ export class App extends Component {
             <Route
               exact
               path="/"
-              element={<News key="general" pageSize={5} category="general" />}
+              element={
+                <News
+                  key="general"
+                  pageSize={this.pageSize}
+                  category="general"
+                />
+              }
             />
             <Route
               exact
               path="/business"
-              element={<News key="business" pageSize={5} category="business" />}
+              element={
+                <News
+                  key="business"
+                  pageSize={this.pageSize}
+                  category="business"
+                />
+              }
             />
             <Route
               exact
@@ -29,7 +42,7 @@ export class App extends Component {
               element={
                 <News
                   key="entertainment"
-                  pageSize={5}
+                  pageSize={this.pageSize}
                   category="entertainment"
                 />
               }
@@ -37,23 +50,37 @@ export class App extends Component {
             <Route
               exact
               path="/health"
-              element={<News key="health" pageSize={5} category="health" />}
+              element={
+                <News key="health" pageSize={this.pageSize} category="health" />
+              }
             />
             <Route
               exact
               path="/science"
-              element={<News key="science" pageSize={5} category="science" />}
+              element={
+                <News
+                  key="science"
+                  pageSize={this.pageSize}
+                  category="science"
+                />
+              }
             />
             <Route
               exact
               path="/sports"
-              element={<News key="sports" pageSize={5} category="sports" />}
+              element={
+                <News key="sports" pageSize={this.pageSize} category="sports" />
+              }
             />
             <Route
               exact
               path="/technology"
               element={
-                <News key="technology" pageSize={5} category="technology" />
+                <News
+                  key="technology"
+                  pageSize={this.pageSize}
+                  category="technology"
+                />
               }
             />
           </Routes>
